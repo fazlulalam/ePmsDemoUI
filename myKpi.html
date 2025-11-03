@@ -1295,11 +1295,10 @@
               <tr>
                 <th>Month</th>
                 <th>Achievement</th>
-                <th>Employee Comments</th>
-                <th>Supervisor Status</th>
-                <th>Third Eye Status</th>
-                <th>Comments</th>
                 <th>URL</th>
+                <th>Employee Comments</th>
+                <th>Supervisor Comments</th>
+                <th>Third Eye Comments</th>
                 <th>Status</th>
               </tr>
             </thead>
@@ -1385,18 +1384,18 @@
 
   // Monthly tracking data
   const monthlyData = [
-    { month: "January", achievement:"", employeeComment: "", supervisorStatus: "Pending", thirdEyeStatus: "Pending", url: "", status: "Pending" },
-    { month: "February", achievement:"", employeeComment: "", supervisorStatus: "Pending", thirdEyeStatus: "Pending", url: "", status: "Pending" },
-    { month: "March", achievement:"", employeeComment: "", supervisorStatus: "Pending", thirdEyeStatus: "Pending", url: "", status: "Pending" },
-    { month: "April", achievement:"", employeeComment: "", supervisorStatus: "Pending", thirdEyeStatus: "Pending", url: "", status: "Pending" },
-    { month: "May", achievement:"", employeeComment: "", supervisorStatus: "Pending", thirdEyeStatus: "Pending", url: "", status: "Pending" },
-    { month: "June", achievement:"", employeeComment: "", supervisorStatus: "Pending", thirdEyeStatus: "Pending", url: "", status: "Pending" },
-    { month: "July", achievement:"", employeeComment: "", supervisorStatus: "Pending", thirdEyeStatus: "Pending", url: "", status: "Pending" },
-    { month: "August", achievement:"", employeeComment: "", supervisorStatus: "Pending", thirdEyeStatus: "Pending", url: "", status: "Pending" },
-    { month: "September", achievement:"", employeeComment: "", supervisorStatus: "Pending", thirdEyeStatus: "Pending", url: "", status: "Pending" },
-    { month: "October", achievement:"", employeeComment: "", supervisorStatus: "Pending", thirdEyeStatus: "Pending", url: "", status: "Pending" },
-    { month: "November", achievement:"", employeeComment: "", supervisorStatus: "Pending", thirdEyeStatus: "Pending", url: "", status: "Pending" },
-    { month: "December", achievement:"", employeeComment: "", supervisorStatus: "Pending", thirdEyeStatus: "Pending", url: "", status: "Pending" }
+    { month: "January", achievement:"", employeeComment: "", supervisorStatus: "ok you are correct", thirdEyeStatus: "ok validate", url: "", status: "Pending" },
+    { month: "February", achievement:"", employeeComment: "", supervisorStatus: "ok", thirdEyeStatus: "validate", url: "", status: "Pending" },
+    { month: "March", achievement:"", employeeComment: "", supervisorStatus: "ok", thirdEyeStatus: "validate", url: "", status: "Pending" },
+    { month: "April", achievement:"", employeeComment: "", supervisorStatus: "Not ok", thirdEyeStatus: "Not ok", url: "", status: "Pending" },
+    { month: "May", achievement:"", employeeComment: "", supervisorStatus: "ok", thirdEyeStatus: "ok", url: "", status: "Pending" },
+    { month: "June", achievement:"", employeeComment: "", supervisorStatus: "ok", thirdEyeStatus: "ok", url: "", status: "Pending" },
+    { month: "July", achievement:"", employeeComment: "", supervisorStatus: "ok", thirdEyeStatus: "ok", url: "", status: "Pending" },
+    { month: "August", achievement:"", employeeComment: "", supervisorStatus: "ok", thirdEyeStatus: "ok", url: "", status: "Pending" },
+    { month: "September", achievement:"", employeeComment: "", supervisorStatus: "ok", thirdEyeStatus: "ok", url: "", status: "Pending" },
+    { month: "October", achievement:"", employeeComment: "", supervisorStatus: "ok", thirdEyeStatus: "ok", url: "", status: "Pending" },
+    { month: "November", achievement:"", employeeComment: "", supervisorStatus: "ok", thirdEyeStatus: "ok", url: "", status: "Pending" },
+    { month: "December", achievement:"", employeeComment: "", supervisorStatus: "ok", thirdEyeStatus: "ok", url: "", status: "Pending" }
   ];
 
   // Open modal when details button is clicked
@@ -1443,19 +1442,16 @@
               <textarea class="employee-comment" data-month="${index}" placeholder="Enter your Achievement...">${data.achievement}</textarea>
             </td>
             <td>
-              <textarea class="employee-comment" data-month="${index}" placeholder="Enter your comments...">${data.employeeComment}</textarea>
-            </td>
-            <td class="status-cell">
-              <span class="status-${data.supervisorStatus.toLowerCase()}">${data.supervisorStatus}</span>
-            </td>
-            <td class="status-cell">
-              <span class="status-${data.thirdEyeStatus.toLowerCase()}">${data.thirdEyeStatus}</span>
-            </td>
-             <td>
-              <textarea class="employee-comment" data-month="${index}" placeholder="Enter your comments...">${data.employeeComment}</textarea>
+              <input type="text" class="url-input" data-month="${index}" placeholder="Enter URL..." value="${data.url}">
             </td>
             <td>
-              <input type="text" class="url-input" data-month="${index}" placeholder="Enter URL..." value="${data.url}">
+              <textarea class="employee-comment" data-month="${index}" placeholder="Enter your comments...">${data.employeeComment}</textarea>
+            </td>
+           <td>
+              <textarea class="employee-comment" data-month="${index}" placeholder="Enter your comments...">${data.supervisorStatus}</textarea>
+            </td>
+           <td>
+              <textarea class="employee-comment" data-month="${index}" placeholder="Enter your comments...">${data.thirdEyeStatus}</textarea>
             </td>
             <td class="status-cell">
               <button class="send-btn-small" data-month="${index}">Send</button>
@@ -1544,7 +1540,7 @@
       commentInput.value = '';
     } 
   });
-  
+
 </script>
 </body>
 </html>

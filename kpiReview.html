@@ -347,11 +347,57 @@
     .modal-content {
       background-color: white;
       border-radius: 8px;
-      width: 90%;
-      max-width: 1000px;
+      width: 95%;
+      max-width: 1400px;
       max-height: 90vh;
       overflow-y: auto;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .monthly-progress-table {
+      font-size: 0.75rem;
+    }
+
+    .monthly-progress-table th,
+    .monthly-progress-table td {
+      padding: 4px 6px !important;
+    }
+
+    .status-badge {
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 500;
+    }
+
+    .status-pending {
+      background-color: #fef3c7;
+      color: #92400e;
+    }
+
+    .status-approved {
+      background-color: #d1fae5;
+      color: #065f46;
+    }
+
+    .status-sent-back {
+      background-color: #fee2e2;
+      color: #991b1b;
+    }
+
+    .dark .status-pending {
+      background-color: #451a03;
+      color: #fbbf24;
+    }
+
+    .dark .status-approved {
+      background-color: #064e3b;
+      color: #34d399;
+    }
+
+    .dark .status-sent-back {
+      background-color: #7f1d1d;
+      color: #f87171;
     }
 
     @media (max-width: 768px) {
@@ -1168,56 +1214,33 @@
         </div>
       </div>
 
-      <!-- Evidence URL -->
+      <!-- Monthly Progress Table -->
       <div class="mb-6">
-        <h4 class="text-md font-semibold text-gray-700 dark:text-gray-200 mb-2">Evidence URL</h4>
-        <input type="text" id="evidenceUrl" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-gray-200" value="https://company.com/evidence/kpi-1" readonly>
-      </div>
-
-      <!-- Comment History -->
-      <div class="mb-6">
-        <h4 class="text-md font-semibold text-gray-700 dark:text-gray-200 mb-2">Comment History</h4>
-        <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-md max-h-40 overflow-y-auto">
-          <div class="comment-item mb-3 pb-3 border-b border-gray-200 dark:border-gray-600">
-            <div class="flex justify-between mb-1">
-              <span class="font-medium text-sm dark:text-gray-200">John Smith (EMP-001)</span>
-              <span class="text-xs text-gray-500 dark:text-gray-400">2023-10-15 14:30</span>
-            </div>
-            <p class="text-sm dark:text-gray-300">I've completed the initial analysis and documentation for this KPI. The results are promising.</p>
-            <div class="status-badge mt-1 inline-block px-2 py-1 rounded text-xs">
-              <span class="text-green-600 dark:text-green-400">✓ Approved</span>
-            </div>
-          </div>
-          <div class="comment-item mb-3 pb-3 border-b border-gray-200 dark:border-gray-600">
-            <div class="flex justify-between mb-1">
-              <span class="font-medium text-sm dark:text-gray-200">Sarah Johnson (Supervisor)</span>
-              <span class="text-xs text-gray-500 dark:text-gray-400">2023-10-16 09:15</span>
-            </div>
-            <p class="text-sm dark:text-gray-300">Good progress. Please ensure the final report includes comparative analysis with last quarter.</p>
-            <div class="status-badge mt-1 inline-block px-2 py-1 rounded text-xs">
-              <span class="text-yellow-600 dark:text-yellow-400">↻ Sent Back</span>
-            </div>
-          </div>
-          <div class="comment-item">
-            <div class="flex justify-between mb-1">
-              <span class="font-medium text-sm dark:text-gray-200">John Smith (EMP-001)</span>
-              <span class="text-xs text-gray-500 dark:text-gray-400">2023-10-17 11:45</span>
-            </div>
-            <p class="text-sm dark:text-gray-300">The comparative analysis has been added to the final report. All data is now up to date.</p>
-            <div class="status-badge mt-1 inline-block px-2 py-1 rounded text-xs">
-              <span class="text-blue-600 dark:text-blue-400">⏳ Pending Review</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Add Comment -->
-      <div>
-        <h4 class="text-md font-semibold text-gray-700 dark:text-gray-200 mb-2">Add Comment</h4>
-        <textarea id="commentInput" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md comment-input dark:bg-gray-700 dark:text-gray-200" placeholder="Enter your comment here..."></textarea>
-        <div class="w-full flex justify-end gap-2 mt-2">
-          <button id="sendBackBtn" class="send-btn bg-yellow-500 hover:bg-yellow-600">Send Back</button>
-          <button id="approveBtn" class="send-btn bg-green-500 hover:bg-green-600">Approve</button>
+        <h4 class="text-md font-semibold text-gray-700 dark:text-gray-200 mb-2">Monthly Progress</h4>
+        <div class="overflow-x-auto">
+          <table class="min-w-full compact-table monthly-progress-table">
+            <thead>
+            <tr class="bg-table-blue text-white">
+              <th class="px-2 py-2 text-center text-xs font-medium uppercase tracking-wider border-r border-blue-500">
+                Month</th>
+              <th class="px-2 py-2 text-center text-xs font-medium uppercase tracking-wider border-r border-blue-500">
+                Achievements</th>
+              <th class="px-2 py-2 text-center text-xs font-medium uppercase tracking-wider border-r border-blue-500">
+                URL</th>
+              <th class="px-2 py-2 text-center text-xs font-medium uppercase tracking-wider border-r border-blue-500">
+                Employee Comments</th>
+              <th class="px-2 py-2 text-center text-xs font-medium uppercase tracking-wider border-r border-blue-500">
+                Supervisor Comments</th>
+              <th class="px-2 py-2 text-center text-xs font-medium uppercase tracking-wider border-r border-blue-500">
+                Third Eye Comments</th>
+              <th class="px-2 py-2 text-center text-xs font-medium uppercase tracking-wider border-r border-blue-500">
+                Status</th>
+            </tr>
+            </thead>
+            <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700" id="monthlyProgress">
+              <!-- Monthly progress will be populated by JavaScript -->
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -1225,14 +1248,6 @@
 </div>
 
 <script>
-  // Modal functionality
-  const modal = document.getElementById('kpiReviewModal');
-  const closeModal = document.getElementById('closeModal');
-  const detailsButtons = document.querySelectorAll('.details-btn');
-  const modalKpiDetails = document.getElementById('modalKpiDetails');
-  const sendBackBtn = document.getElementById('sendBackBtn');
-  const approveBtn = document.getElementById('approveBtn');
-
   // KPI data for the modal
   const kpiData = {
     1: {
@@ -1243,7 +1258,22 @@
       target: "15",
       achievement: "14",
       achievementPercent: "93%",
-      score: "27.9"
+      score: "27.9",
+      isTargeted: true,
+      monthlyData: {
+        january: { achievement: "12", url: "https://company.com/evidence/jan-revenue", employeeComments: "Good progress this month, met most targets.", supervisorComments: "", thirdEyeComments: "Performance is satisfactory for this period.", status: "pending" },
+        february: { achievement: "13", url: "https://company.com/evidence/feb-revenue", employeeComments: "Completed all assigned tasks ahead of schedule.", supervisorComments: "", thirdEyeComments: "Performance exceeded expectations this month.", status: "approved" },
+        march: { achievement: "14", url: "https://company.com/evidence/mar-revenue", employeeComments: "Faced some challenges but managed to meet targets.", supervisorComments: "", thirdEyeComments: "Performance was adequate considering the challenges.", status: "pending" },
+        april: { achievement: "13", url: "https://company.com/evidence/apr-revenue", employeeComments: "Slight dip due to market conditions.", supervisorComments: "", thirdEyeComments: "Acceptable performance given external factors.", status: "sent-back" },
+        may: { achievement: "14", url: "https://company.com/evidence/may-revenue", employeeComments: "Recovered well from previous month.", supervisorComments: "", thirdEyeComments: "Good recovery, showing improvement.", status: "pending" },
+        june: { achievement: "15", url: "https://company.com/evidence/jun-revenue", employeeComments: "Exceeded target this month.", supervisorComments: "", thirdEyeComments: "Excellent performance, exceeded expectations.", status: "approved" },
+        july: { achievement: "14", url: "https://company.com/evidence/jul-revenue", employeeComments: "Maintained strong performance despite seasonal challenges.", supervisorComments: "", thirdEyeComments: "Consistent performance during challenging period.", status: "approved" },
+        august: { achievement: "15", url: "https://company.com/evidence/aug-revenue", employeeComments: "Achieved target with new client acquisitions.", supervisorComments: "", thirdEyeComments: "Excellent work on business development.", status: "approved" },
+        september: { achievement: "16", url: "https://company.com/evidence/sep-revenue", employeeComments: "Exceeded targets with successful product launch.", supervisorComments: "", thirdEyeComments: "Outstanding results from new product initiative.", status: "approved" },
+        october: { achievement: "15", url: "https://company.com/evidence/oct-revenue", employeeComments: "Maintained high performance levels.", supervisorComments: "", thirdEyeComments: "Consistent delivery of results.", status: "approved" },
+        november: { achievement: "14", url: "https://company.com/evidence/nov-revenue", employeeComments: "Slight seasonal adjustment but still strong.", supervisorComments: "", thirdEyeComments: "Good performance considering seasonal trends.", status: "pending" },
+        december: { achievement: "16", url: "https://company.com/evidence/dec-revenue", employeeComments: "Ended year with record performance.", supervisorComments: "", thirdEyeComments: "Excellent year-end performance.", status: "approved" }
+      }
     },
     2: {
       kra: "Performance",
@@ -1253,7 +1283,22 @@
       target: "10",
       achievement: "9",
       achievementPercent: "90%",
-      score: "22.5"
+      score: "22.5",
+      isTargeted: true,
+      monthlyData: {
+        january: { achievement: "8", url: "https://company.com/evidence/jan-cost", employeeComments: "Implemented new cost-saving measures.", supervisorComments: "", thirdEyeComments: "Good initiative on cost reduction.", status: "approved" },
+        february: { achievement: "9", url: "https://company.com/evidence/feb-cost", employeeComments: "Cost reduction measures showing results.", supervisorComments: "", thirdEyeComments: "Effective cost management.", status: "approved" },
+        march: { achievement: "8", url: "https://company.com/evidence/mar-cost", employeeComments: "Some unexpected expenses this month.", supervisorComments: "", thirdEyeComments: "Understandable given the circumstances.", status: "pending" },
+        april: { achievement: "9", url: "https://company.com/evidence/apr-cost", employeeComments: "Back on track with cost reduction.", supervisorComments: "", thirdEyeComments: "Good recovery on cost control.", status: "approved" },
+        may: { achievement: "9", url: "https://company.com/evidence/may-cost", employeeComments: "Maintaining cost reduction targets.", supervisorComments: "", thirdEyeComments: "Consistent performance.", status: "approved" },
+        june: { achievement: "10", url: "https://company.com/evidence/jun-cost", employeeComments: "Achieved full cost reduction target.", supervisorComments: "", thirdEyeComments: "Excellent achievement on cost control.", status: "approved" },
+        july: { achievement: "9", url: "https://company.com/evidence/jul-cost", employeeComments: "Maintained cost efficiency despite increased activity.", supervisorComments: "", thirdEyeComments: "Good cost management during busy period.", status: "approved" },
+        august: { achievement: "10", url: "https://company.com/evidence/aug-cost", employeeComments: "Optimized vendor contracts for better rates.", supervisorComments: "", thirdEyeComments: "Excellent negotiation skills demonstrated.", status: "approved" },
+        september: { achievement: "9", url: "https://company.com/evidence/sep-cost", employeeComments: "Implemented additional efficiency measures.", supervisorComments: "", thirdEyeComments: "Proactive approach to cost management.", status: "approved" },
+        october: { achievement: "10", url: "https://company.com/evidence/oct-cost", employeeComments: "Achieved target through process optimization.", supervisorComments: "", thirdEyeComments: "Effective process improvements.", status: "approved" },
+        november: { achievement: "9", url: "https://company.com/evidence/nov-cost", employeeComments: "Maintained cost control during budget planning.", supervisorComments: "", thirdEyeComments: "Good fiscal discipline.", status: "pending" },
+        december: { achievement: "10", url: "https://company.com/evidence/dec-cost", employeeComments: "Ended year with optimal cost structure.", supervisorComments: "", thirdEyeComments: "Excellent year-end cost management.", status: "approved" }
+      }
     },
     3: {
       kra: "Performance",
@@ -1263,7 +1308,22 @@
       target: "22",
       achievement: "21",
       achievementPercent: "95%",
-      score: "19"
+      score: "19",
+      isTargeted: true,
+      monthlyData: {
+        january: { achievement: "20", url: "https://company.com/evidence/jan-profit", employeeComments: "Close to target profit margin.", supervisorComments: "", thirdEyeComments: "Good progress towards target.", status: "pending" },
+        february: { achievement: "21", url: "https://company.com/evidence/feb-profit", employeeComments: "Achieved profit margin target.", supervisorComments: "", thirdEyeComments: "Target achieved successfully.", status: "approved" },
+        march: { achievement: "20", url: "https://company.com/evidence/mar-profit", employeeComments: "Slight dip due to increased costs.", supervisorComments: "", thirdEyeComments: "Minor setback, but still close to target.", status: "pending" },
+        april: { achievement: "21", url: "https://company.com/evidence/apr-profit", employeeComments: "Back to target profit margin.", supervisorComments: "", thirdEyeComments: "Good recovery.", status: "approved" },
+        may: { achievement: "22", url: "https://company.com/evidence/may-profit", employeeComments: "Exceeded profit margin target.", supervisorComments: "", thirdEyeComments: "Outstanding performance.", status: "approved" },
+        june: { achievement: "21", url: "https://company.com/evidence/jun-profit", employeeComments: "Maintaining strong profit margin.", supervisorComments: "", thirdEyeComments: "Consistently good performance.", status: "approved" },
+        july: { achievement: "22", url: "https://company.com/evidence/jul-profit", employeeComments: "Strong profit performance in Q3.", supervisorComments: "", thirdEyeComments: "Excellent quarterly results.", status: "approved" },
+        august: { achievement: "23", url: "https://company.com/evidence/aug-profit", employeeComments: "Record profit margin achieved.", supervisorComments: "", thirdEyeComments: "Exceptional performance this month.", status: "approved" },
+        september: { achievement: "22", url: "https://company.com/evidence/sep-profit", employeeComments: "Maintained high profit margins.", supervisorComments: "", thirdEyeComments: "Consistent strong performance.", status: "approved" },
+        october: { achievement: "21", url: "https://company.com/evidence/oct-profit", employeeComments: "Slight adjustment but still above target.", supervisorComments: "", thirdEyeComments: "Good performance maintaining targets.", status: "approved" },
+        november: { achievement: "22", url: "https://company.com/evidence/nov-profit", employeeComments: "Back to optimal profit levels.", supervisorComments: "", thirdEyeComments: "Effective profit management.", status: "pending" },
+        december: { achievement: "24", url: "https://company.com/evidence/dec-profit", employeeComments: "Record year-end profit margin.", supervisorComments: "", thirdEyeComments: "Outstanding year-end performance.", status: "approved" }
+      }
     },
     4: {
       kra: "Customer Satisfaction",
@@ -1273,7 +1333,22 @@
       target: "N/A",
       achievement: "Very Good",
       achievementPercent: "100%",
-      score: "15"
+      score: "15",
+      isTargeted: false,
+      monthlyData: {
+        january: { achievement: "Good", url: "https://company.com/evidence/jan-nps", employeeComments: "Documentation completed as per schedule.", supervisorComments: "", thirdEyeComments: "Satisfactory work on documentation.", status: "approved" },
+        february: { achievement: "Very Good", url: "https://company.com/evidence/feb-nps", employeeComments: "Improved documentation quality.", supervisorComments: "", thirdEyeComments: "Noticeable improvement in quality.", status: "approved" },
+        march: { achievement: "Excellent", url: "https://company.com/evidence/mar-nps", employeeComments: "Received positive feedback on documentation.", supervisorComments: "", thirdEyeComments: "Excellent work this month.", status: "approved" },
+        april: { achievement: "Very Good", url: "https://company.com/evidence/apr-nps", employeeComments: "Maintained high documentation standards.", supervisorComments: "", thirdEyeComments: "Consistently good quality.", status: "approved" },
+        may: { achievement: "Excellent", url: "https://company.com/evidence/may-nps", employeeComments: "Exceeded documentation expectations.", supervisorComments: "", thirdEyeComments: "Outstanding documentation work.", status: "approved" },
+        june: { achievement: "Very Good", url: "https://company.com/evidence/jun-nps", employeeComments: "Consistent high-quality documentation.", supervisorComments: "", thirdEyeComments: "Reliably good performance.", status: "approved" },
+        july: { achievement: "Excellent", url: "https://company.com/evidence/jul-nps", employeeComments: "Implemented new documentation standards.", supervisorComments: "", thirdEyeComments: "Innovative approach to documentation.", status: "approved" },
+        august: { achievement: "Excellent", url: "https://company.com/evidence/aug-nps", employeeComments: "Maintained exceptional documentation quality.", supervisorComments: "", thirdEyeComments: "Consistently excellent work.", status: "approved" },
+        september: { achievement: "Very Good", url: "https://company.com/evidence/sep-nps", employeeComments: "Updated documentation for new processes.", supervisorComments: "", thirdEyeComments: "Good adaptation to changes.", status: "approved" },
+        october: { achievement: "Excellent", url: "https://company.com/evidence/oct-nps", employeeComments: "Streamlined documentation process.", supervisorComments: "", thirdEyeComments: "Efficient process improvements.", status: "approved" },
+        november: { achievement: "Very Good", url: "https://company.com/evidence/nov-nps", employeeComments: "Prepared year-end documentation.", supervisorComments: "", thirdEyeComments: "Thorough year-end preparation.", status: "pending" },
+        december: { achievement: "Excellent", url: "https://company.com/evidence/dec-nps", employeeComments: "Completed annual documentation review.", supervisorComments: "", thirdEyeComments: "Comprehensive year-end documentation.", status: "approved" }
+      }
     },
     5: {
       kra: "Customer Satisfaction",
@@ -1283,9 +1358,31 @@
       target: "85",
       achievement: "82",
       achievementPercent: "96%",
-      score: "9.6"
+      score: "9.6",
+      isTargeted: true,
+      monthlyData: {
+        january: { achievement: "80", url: "https://company.com/evidence/jan-retention", employeeComments: "Slightly below target but improving.", supervisorComments: "", thirdEyeComments: "Acceptable given market conditions.", status: "pending" },
+        february: { achievement: "82", url: "https://company.com/evidence/feb-retention", employeeComments: "Improved retention rate this month.", supervisorComments: "", thirdEyeComments: "Good improvement trend.", status: "approved" },
+        march: { achievement: "83", url: "https://company.com/evidence/mar-retention", employeeComments: "Exceeded retention target.", supervisorComments: "", thirdEyeComments: "Excellent performance on retention.", status: "approved" },
+        april: { achievement: "81", url: "https://company.com/evidence/apr-retention", employeeComments: "Slight dip but still close to target.", supervisorComments: "", thirdEyeComments: "Minor fluctuation, still acceptable.", status: "pending" },
+        may: { achievement: "84", url: "https://company.com/evidence/may-retention", employeeComments: "Strong recovery on retention rate.", supervisorComments: "", thirdEyeComments: "Impressive recovery and performance.", status: "approved" },
+        june: { achievement: "85", url: "https://company.com/evidence/jun-retention", employeeComments: "Achieved exact retention target.", supervisorComments: "", thirdEyeComments: "Perfect achievement of target.", status: "approved" },
+        july: { achievement: "86", url: "https://company.com/evidence/jul-retention", employeeComments: "Exceeded retention targets with new initiatives.", supervisorComments: "", thirdEyeComments: "Excellent results from new programs.", status: "approved" },
+        august: { achievement: "85", url: "https://company.com/evidence/aug-retention", employeeComments: "Maintained strong retention rates.", supervisorComments: "", thirdEyeComments: "Consistent performance meeting targets.", status: "approved" },
+        september: { achievement: "87", url: "https://company.com/evidence/sep-retention", employeeComments: "Record high retention rate achieved.", supervisorComments: "", thirdEyeComments: "Outstanding retention performance.", status: "approved" },
+        october: { achievement: "86", url: "https://company.com/evidence/oct-retention", employeeComments: "Maintained excellent retention levels.", supervisorComments: "", thirdEyeComments: "Strong ongoing performance.", status: "approved" },
+        november: { achievement: "85", url: "https://company.com/evidence/nov-retention", employeeComments: "Met targets during challenging period.", supervisorComments: "", thirdEyeComments: "Good resilience in difficult market.", status: "pending" },
+        december: { achievement: "88", url: "https://company.com/evidence/dec-retention", employeeComments: "Ended year with best retention rate ever.", supervisorComments: "", thirdEyeComments: "Exceptional year-end performance.", status: "approved" }
+      }
     }
   };
+
+  // Modal functionality
+  const modal = document.getElementById('kpiReviewModal');
+  const closeModal = document.getElementById('closeModal');
+  const detailsButtons = document.querySelectorAll('.details-btn');
+  const modalKpiDetails = document.getElementById('modalKpiDetails');
+  const monthlyProgress = document.getElementById('monthlyProgress');
 
   // Open modal when details button is clicked
   detailsButtons.forEach(button => {
@@ -1310,7 +1407,7 @@
                 ${kpi.target}
               </td>
               <td class="px-2 py-2 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300 border-r border-gray-200 dark:border-gray-700">
-                <input type="text" class="score-input dark:bg-gray-700 dark:text-gray-200" value="${kpi.achievement}">
+                ${kpi.achievement}
               </td>
               <td class="px-2 py-2 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300 border-r border-gray-200 dark:border-gray-700">
                 ${kpi.achievementPercent}
@@ -1320,6 +1417,90 @@
               </td>
             </tr>
           `;
+
+      // Populate monthly progress table
+      let monthlyHtml = '';
+      const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+      
+      months.forEach(month => {
+        const monthData = kpi.monthlyData[month];
+        if (!monthData) return; // Skip if no data for this month
+        
+        const monthName = month.charAt(0).toUpperCase() + month.slice(1);
+        
+        // Determine input type based on whether KPI is targeted
+        let achievementInput = '';
+        if (kpi.isTargeted) {
+          achievementInput = `<input type="text" class="score-input dark:bg-gray-700 dark:text-gray-200 w-full" value="${monthData.achievement}">`;
+        } else {
+          const options = ['Excellent', 'Very Good', 'Good', 'Average'];
+          let optionsHtml = '';
+          options.forEach(option => {
+            const selected = option === monthData.achievement ? 'selected' : '';
+            optionsHtml += `<option value="${option}" ${selected}>${option}</option>`;
+          });
+          achievementInput = `<select class="score-input dark:bg-gray-700 dark:text-gray-200 w-full">${optionsHtml}</select>`;
+        }
+        
+        // Determine status badge
+        let statusBadge = '';
+        if (monthData.status === 'approved') {
+          statusBadge = '<span class="status-badge status-approved">Approved</span>';
+        } else if (monthData.status === 'sent-back') {
+          statusBadge = '<span class="status-badge status-sent-back">Sent Back</span>';
+        } else {
+          statusBadge = '<span class="status-badge status-pending">Pending</span>';
+        }
+        
+        monthlyHtml += `
+          <tr>
+            <td class="px-2 py-2 text-center text-sm text-gray-500 dark:text-gray-300 border-r border-gray-200 dark:border-gray-700">
+              ${monthName}
+            </td>
+            <td class="px-2 py-2 text-center text-sm text-gray-500 dark:text-gray-300 border-r border-gray-200 dark:border-gray-700">
+              ${achievementInput}
+            </td>
+            <td class="px-2 py-2 text-center text-sm text-gray-500 dark:text-gray-300 border-r border-gray-200 dark:border-gray-700">
+              <a href="${monthData.url}" target="_blank" class="text-blue-500 hover:underline">View Evidence</a>
+            </td>
+            <td class="px-2 py-2 text-center text-sm text-gray-500 dark:text-gray-300 border-r border-gray-200 dark:border-gray-700">
+              <textarea class="comment-input dark:bg-gray-700 dark:text-gray-200 w-full h-20" readonly>${monthData.employeeComments}</textarea>
+            </td>
+            <td class="px-2 py-2 text-center text-sm text-gray-500 dark:text-gray-300 border-r border-gray-200 dark:border-gray-700">
+              <textarea class="comment-input dark:bg-gray-700 dark:text-gray-200 w-full h-20" placeholder="Enter supervisor comments...">${monthData.supervisorComments}</textarea>
+            </td>
+            <td class="px-2 py-2 text-center text-sm text-gray-500 dark:text-gray-300 border-r border-gray-200 dark:border-gray-700">
+              <textarea class="comment-input dark:bg-gray-700 dark:text-gray-200 w-full h-20" readonly>${monthData.thirdEyeComments}</textarea>
+            </td>
+            <td class="px-2 py-2 text-center text-sm text-gray-500 dark:text-gray-300 border-r border-gray-200 dark:border-gray-700">
+              <div class="flex flex-col gap-1">
+                <button class="action-btn send-back-btn bg-yellow-500 hover:bg-yellow-600 text-white" data-month="${month}" data-kpi="${kpiId}">Send Back</button>
+                <button class="action-btn approve-btn bg-green-500 hover:bg-green-600 text-white" data-month="${month}" data-kpi="${kpiId}">Approve</button>
+                <div class="mt-1">${statusBadge}</div>
+              </div>
+            </td>
+          </tr>
+        `;
+      });
+      
+      monthlyProgress.innerHTML = monthlyHtml;
+      
+      // Add event listeners to the new buttons
+      document.querySelectorAll('.send-back-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const month = this.getAttribute('data-month');
+          const kpiId = this.getAttribute('data-kpi');
+          handleStatusChange(kpiId, month, 'sent-back');
+        });
+      });
+      
+      document.querySelectorAll('.approve-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const month = this.getAttribute('data-month');
+          const kpiId = this.getAttribute('data-kpi');
+          handleStatusChange(kpiId, month, 'approved');
+        });
+      });
 
       // Show modal
       modal.style.display = 'flex';
@@ -1338,30 +1519,36 @@
     }
   });
 
-  // Send Back functionality
-  sendBackBtn.addEventListener('click', function() {
-    const commentInput = document.getElementById('commentInput');
-    const comment = commentInput.value.trim();
-    if (comment) {
-      // alert(`KPI has been sent back with comment: ${comment}`);
-      modal.style.display = 'none';
+  // Handle status change
+  function handleStatusChange(kpiId, month, status) {
+    // In a real application, you would send this to a server
+    // For now, we'll just update the local data and show an alert
+    kpiData[kpiId].monthlyData[month].status = status;
+    
+    // Update the status badge
+    const statusCell = document.querySelector(`button[data-kpi="${kpiId}"][data-month="${month}"]`).closest('td');
+    let statusBadge = '';
+    if (status === 'approved') {
+      statusBadge = '<span class="status-badge status-approved">Approved</span>';
+    } else if (status === 'sent-back') {
+      statusBadge = '<span class="status-badge status-sent-back">Sent Back</span>';
     } else {
-      // alert('Please add a comment before sending back.');
+      statusBadge = '<span class="status-badge status-pending">Pending</span>';
     }
-  });
-
-  // Approve functionality
-  approveBtn.addEventListener('click', function() {
-    const commentInput = document.getElementById('commentInput');
-    const comment = commentInput.value.trim();
-    if (comment) {
-      // alert(`KPI has been approved with comment: ${comment}`);
-      modal.style.display = 'none';
+    
+    // Find and update the status badge in the cell
+    const existingBadge = statusCell.querySelector('.status-badge');
+    if (existingBadge) {
+      existingBadge.outerHTML = statusBadge;
     } else {
-      // alert('Please add a comment before approving.');
+      const buttonsContainer = statusCell.querySelector('.flex.flex-col');
+      buttonsContainer.innerHTML += statusBadge;
     }
-  });
-  
+    
+    // Show confirmation message
+    const monthName = month.charAt(0).toUpperCase() + month.slice(1);
+    // alert(`KPI for ${monthName} has been ${status === 'approved' ? 'approved' : 'sent back'}.`);
+  }
 </script>
 </body>
 </html>
